@@ -1,25 +1,34 @@
 pipeline {
-  agent any
-  
-  stages {
-     
-     stage ('Build') {
-          steps {
-              echo 'stage 1'
-          }
+	agent any
+
+	stages {
+
+    stage (ST1) {
+      steps {
+         echo "ST1"
+         sh '''#!/bin/bash
+               free -m
+               sleep 2
+            '''
       }
-      
-     stage ('Test') {
-          steps {
-              echo 'stage 2'
-          }
-      }
-      
-     stage ('Deploy') {
-          steps {
-              echo 'stage 3'
-          }
-      }
-      
+
+    }
+
+    stage (ST2) {
+       steps {
+         echo "ST2"
+         sh '''#!/bin/bash
+               df -h
+               sleep 2
+            '''
+       }
+    }
+
+    stage (ST3) {
+       steps {
+         echo "ST3"
+       }
+    }
+
    }
 }
